@@ -1,0 +1,108 @@
+<html><head><title>u</title><meta charset="utf-8"/></head>
+<!--
+   -o and o- for last/first
+   TODO
+    - alternate font-family for DejaVu
+    <span class=special>&#x231b;</span>
+    and specify the font list for the class in CSS, e.g.
+    .special { font-family: Quivira, "Arial Unicode MS", Symbola, "Everson Mono"; }
+
+within	±	plusmn	000B1	177
+
+cmb	⊙	8857	2299	 	CIRCLED DOT OPERATOR
+	⨀  Unicode Character 'N-ARY CIRCLED DOT OPERATOR' (U+2A00)
+prm	⊡	8865	22A1	 	SQUARED DOT OPERATOR
+
+
+in	∈	isin	02208
+	∊	8714	220a
+member	∋	8715	220B	&ni;	CONTAINS AS MEMBER
+ 	∍	8717	220D	 
+except 	is like a backslash (set minus)
+in\:	⊂	U+228   2e2 8a 82	SUBSET OF
+
+⋂	Intersection	022C2	8898
+⋂	8898	22C2	 	N-ARY INTERSECTION
+⋃	8899	22C3	 	N-ARY UNION
+
+cmb	⊚	8858	229A	 	CIRCLED RING OPERATOR
+prm	⊙	8857	2299	 	CIRCLED DOT OPERATOR
+
+U+03FD	Ͻ	Greek Capital Reversed Lunate Sigma Symbol
+U+03FE	Ͼ	Greek Capital Dotted Lunate Sigma Symbol
+U+03FF	Ͽ	Greek Capital Reversed Dotted Lunate Sigma Symbol
+
+U+2020	†	Dagger	0914
+U+2021	‡	Double dagger	0915
+U+2026	…	Horizontal ellipsis	0917
+U+259A	▚	Quadrant upper left and lower right
+U+259B	▛	Quadrant upper left and upper right and lower left
+U+259C	▜	Quadrant upper left and upper right and lower right
+U+259D	▝	Quadrant upper right
+U+259E	▞	Quadrant upper right and lower left
+U+25D0	◐	Circle with left half black
+U+25D1	◑	Circle with right half black
+U+25D2	◒	Circle with lower half black
+U+25D3	◓	Circle with upper half black
+U+25D4	◔	Circle with upper right quadrant black
+U+25D5	◕	Circle with all but upper left quadrant black
+U+25D6	◖	Left half circle black
++25DC	◜	Upper left quadrant circular arc
+U+25DD	◝	Upper right quadrant circular arc
+U+25DE	◞	Lower right quadrant circular arc
+/flip:
+U+25E5	◥	Black upper right triangleO
+
+U+00A1	¡	c2 a1	INVERTED EX­CLA­MA­TI­ON MARK
+U+0307  ̇¡       cc 87	COM­BI­NING DOT ABOVE
+U+1D46A	𝑪	f0 9d 91 aa	MA­THE­MA­TI­CAL BOLD ITALIC CA­PI­TAL C
+U+1d554	𝕔	f0 9d 95 94	MA­THE­MA­TI­CAL DOUBLE-STRUCK SMALL C	
+U+1D561	𝕡	f0 9d 95 a1	MA­THE­MA­TI­CAL DOUBLE-STRUCK SMALL P
+U+1D477	𝑷	f0 9d 91 b7	MA­THE­MA­TI­CAL BOLD ITALIC CA­PI­TAL P
+-->
+<style>
+.head{padding-bottom: 10px;}
+body{width:100%; width:100vw; }
+common{background-color:ivory; overflow:hidden; }
+.prompt,.result{width:100%; font-size:14pt; }
+.result{font-family:serif; }
+.prompt{font-family:mono; }
+.layout{border:0px solid;padding:0;margin:0;}
+.flayout { background-color: #f3f3f3; border: solid 1px #a1a1a1; padding: 10px; width: 100%; }
+.flayout label, .flayout input { display: block; width: 40pt; float: left; }
+.flayout label {font-family:mono; text-align: right; padding-right: 10px; }
+br { clear: left; }
+</style>
+<body class="common" onload="ini()">
+ <div class="layout common" style="float:left;width:76%; ">
+  <div class=head>enter k and get unicode.  
+       <a href="http://www.w3schools.com/charsets/ref_utf_math.asp">mathops</a>
+       <a href="https://en.wikipedia.org/wiki/List_of_Unicode_characters">wikipedia</a>
+       <a href="http://unicode-search.net/unicode-namesearch.pl?term=circled">search</a>
+       <a href="https://en.wikipedia.org/wiki/APL_syntax_and_symbols#Dyadic_functions">apl</a>
+  </div>
+  <form><input id="k" value="(k cmb x)in\:k prm x; 3 within 2 5" "onsubmit=sp()"
+                             class="prompt" type="text" name="k" autofocus autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+  </form>
+  <div id="r" class="result"></div>
+ <div id="tab" class="flayout layout" style="float:right; width:26%; width:20vw; height:400px;"><div>legend update 'nyi<p></div></div>
+</body>
+<script>
+
+var b=["within","in","cmb","prm"],            d,id=function(x){return d.getElementById(x);},C,ce,ac,
+    c=["b1","220a","1d554","1d561"],
+    e=["","","","",              "{&/x in y}"];
+
+function ku(k){return String.fromCodePoint(Number.parseInt(id(k).value,16));}
+function m(){var m={"in":0};for(k in b)m[b[k]]=ku(b[k]);return m;}
+function tr(s,k,v){var g=" *";C.log(k);return s.replace(new RegExp(g+k+g,"g"),ku(k));}
+function sp(){var s=id("k").value,d=m();for(k in b)s=tr(s,b[k],c[k]);C.log(s);id("r").innerHTML=s;return false;}
+function tabi(){var r={};for(k in b){l=ce('label'),l.innerHTML=b[k];i=ce('input');i.id=b[k];i.name=c[k];i.value=c[k];r[b[k]]=[l,i];}return r;}
+function disp(k){u=ce('div');u.id="u"+k;u.innerHTML="&nbsp;"+ku(k)+"<br>";return u;}
+function tab(){var t=id("tab"),q;for(k in x=tabi()){for(j in x[k])ac(t,x[k][j]);ac(t,disp(k));}}
+function ini(){d=document;C=console;ce=function(x){return d.createElement(x);};ac=function(x,y){return x.appendChild(y);}
+ tab();d.body.onkeypress=function(e){return e.keyCode==13?sp():true;};sp();
+}
+</script>
+</html>
+
